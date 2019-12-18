@@ -61,15 +61,15 @@ rank = comm.Get_rank()
 )
 def main(
     scheduler_file,
-    interface,
-    nthreads,
-    local_directory,
-    memory_limit,
-    scheduler,
-    dashboard_address,
-    nanny,
     scheduler_port,
+    interface,
     protocol,
+    nthreads,
+    memory_limit,
+    local_directory,
+    scheduler,
+    nanny,
+    dashboard_address,
 ):
 
     if rank == 0 and scheduler:
