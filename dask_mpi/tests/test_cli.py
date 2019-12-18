@@ -17,6 +17,8 @@ from distributed.utils import tmpfile
 from distributed.utils_test import popen
 from distributed.utils_test import loop  # noqa: F401
 
+from dask_mpi.tests.utils import check_port_okay
+
 
 FNULL = open(os.devnull, "w")  # hide output of subprocess
 
@@ -107,18 +109,6 @@ def test_non_default_ports(loop, nanny, mpirun):
                         assert nanny_port == 50164
 
                 assert c.submit(lambda x: x + 1, 10).result() == 11
-
-
-def check_port_okay(port):
-    start = time()
-    while True:
-        try:
-            response = requests.get("http://localhost:%d/status/" % port)
-            assert response.ok
-            break
-        except Exception:
-            sleep(0.1)
-            assert time() < start + 20
 
 
 def test_dashboard(loop, mpirun):
