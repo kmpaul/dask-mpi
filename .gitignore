@@ -113,4 +113,9 @@ venv.bak/
 # Dask files
 global.lock
 purge.lock
-/temp/
+dask-worker-space/
+worker-*/
+
+# VSCode files
+.vscode/
+.devcontainer/
